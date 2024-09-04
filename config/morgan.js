@@ -6,10 +6,16 @@ morgan.token('message', (req, res) => res.locals.errorMessage || '');
 const getIPFormat = () =>
   config.env === 'production' ? ':remote-addr - ' : '';
 
-const accessLogStream = fs.createWriteStream(
-  path.join(__dirname, '..', 'logs/access.log'),
-  { flags: 'a' }
-);
+const logsDir = path.join(__dirname, '..', 'logs');
+const logFile = path.join(logsDir, 'access.log');
+
+// Create the logs directory if it doesn't exist
+if (!fs.existsSync(logsDir)) {
+  fs.mkdirSync(logsDir, { recursive: true });
+}
+
+// Create the write stream for the log file
+const accessLogStream = fs.createWriteStream(logFile, { flags: 'a' });
 
 const successResponseFormat = `${getIPFormat()} :method :url :status :response-time ms :user-agent :date`;
 const successHandler = morgan(successResponseFormat, {
