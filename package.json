@@ -6,7 +6,7 @@
     "prettier": "prettier --check **/*.js",
     "prettier:fix": "prettier --write **/*.js",
     "lint-staged": "lint-staged",
-    "prepare" : "husky install"
+    "prepare": "husky install"
   },
   "dependencies": {
     "@meanie/mongoose-to-json": "^2.6.0",
@@ -42,7 +42,7 @@
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-security": "^1.7.1",
-    "husky": "^9.1.7",
+    "husky": "^8.0.0",
     "lint-staged": "^15.5.1",
     "nodemon": "^2.0.21"
   }
